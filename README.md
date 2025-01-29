@@ -17,7 +17,7 @@
 
 ### **1️⃣ Установка зависимостей** 
 ```bash
-git clone https://github.com/ТВОЙ_ЛОГИН/lab2-web-service.git
+git clone https://github.com/RedTowerInc/lab2-web-service.git
 cd lab2-web-service
 python -m venv venv
 venv\Scripts\activate

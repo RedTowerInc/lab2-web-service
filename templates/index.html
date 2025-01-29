@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комплектующие</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        async function loadComponents() {
+            const response = await fetch('/api/components');
+            const components = await response.json();
+            const tableBody = document.getElementById('components-table-body');
+            tableBody.innerHTML = '';
+
+            Object.keys(components).forEach(id => {
+                const item = components[id];
+                const row = `<tr>
+                                <td>${id}</td>
+                                <td>${item.тип}</td>
+                                <td>${item.название}</td>
+                                <td>${item.производитель}</td>
+                                <td>${item.цена} ₽</td>
+                            </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        window.onload = loadComponents;
+    </script>
+</head>
+<body class="container mt-4">
+    <h2 class="mb-4">Список комплектующих</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Тип</th>
+                <th>Название</th>
+                <th>Производитель</th>
+                <th>Цена</th>
+            </tr>
+        </thead>
+        <tbody id="components-table-body"></tbody>
+    </table>
+</body>
+</html>
